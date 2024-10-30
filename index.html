@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>晚餐選擇器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f7f7f7;
+        }
+        h1 {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        #result {
+            font-size: 1.25em;
+            margin-top: 20px;
+            color: #555;
+            white-space: pre-line; /* 用於換行顯示 */
+        }
+        .button {
+            font-size: 1.2em;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 300px;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        /* 手機響應式設計 */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            #result {
+                font-size: 1.1em;
+            }
+            .button {
+                font-size: 1em;
+                padding: 12px 24px;
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>晚餐選擇器</h1>
+    <div id="result">按下按鈕選擇今晚的兩種晚餐</div>
+    <button class="button" onclick="chooseDinner()">選擇晚餐</button>
+    <button class="button" onclick="closeWindow()">結束</button>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        const dinnerOptions = [
+            'Sukiya(小朋友咖哩)', '軟蛋醬', '正忠排骨飯(永吉路)', 
+            '永吉路炒飯(宏品)', '永吉路新便當店', '職人井', '江家香腸飯', 
+            '麥當勞', '紅花鹹水雞', '同客餃子館', '泡麵', '老三豬腳', 
+            '池上便當', '老高扁食', '老邱牛肉麵', '游一間便當店'
+        ];
+
+        function chooseDinner() {
+            const choices = [];
+            while (choices.length < 2) {
+                const choice = dinnerOptions[Math.floor(Math.random() * dinnerOptions.length)];
+                if (!choices.includes(choice)) {
+                    choices.push(choice);
+                }
+            }
+            $('#result').text(`晚餐選擇1: ${choices[0]}\n晚餐選擇2: ${choices[1]}`);
+        }
+
+        function closeWindow() {
+            window.close();
+        }
+    </script>
+
+</body>
+</html>
